@@ -1,6 +1,5 @@
 import Image from "next/image"
 import { FC, useState } from "react"
-import { useSigner } from "wagmi"
 import Confetti from "react-confetti"
 import axios from "axios"
 import useWindowSize from "../../lib/useWindowSize"
@@ -14,11 +13,9 @@ interface MintButtonProps {
 const MintButton: FC<MintButtonProps> = () => {
   const [loading, setLoading] = useState(false)
   const [startConfetti, setStartConfetti] = useState(false)
-  const { data: signer } = useSigner()
   const { width, height } = useWindowSize()
 
   const handleClick = async () => {
-    if (!signer) return
     setLoading(true)
     const receipt = (await axios.get("/api/mint?name=MINT BUTTON COMPONENT")) as any
     if (!receipt?.error) {
