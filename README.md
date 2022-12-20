@@ -1,4 +1,4 @@
-# CRE8ORS UI
+# nft name generator UI
 
 This is a [RainbowKit](https://rainbowkit.com) + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org/) project.
 
@@ -19,15 +19,12 @@ yarn
 yarn
 ```
 
-Next, copy the `.env.local` file to `.env` and fill in:
-
-- NEXT_PUBLIC_CRE8ORS_ADDRESS=
-- NEXT_PUBLIC_CHAIN_ID=
+Next, copy the `.env.local` file to `.env` and fill in missing variables.
 
 Finally, run the development server:
 
 ```bash
-npm run dev
+yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

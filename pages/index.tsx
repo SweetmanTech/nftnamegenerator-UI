@@ -5,10 +5,14 @@ import AllowList from "../components/AllowList"
 
 const Home: NextPage = () => (
   <div className={styles.container}>
-    <SeoHead title="CRE8ORS" description="CRE8ORS coming soon" image="" />
+    <SeoHead
+      title="nft name generator"
+      description="use AI to inspire your next nft drop"
+      image=""
+    />
 
     <main className={styles.main}>
-      <h1 className={styles.title}>CRE8ORS</h1>
+      <h1 className={styles.title}>nft name generator</h1>
       <AllowList />
     </main>
   </div>
