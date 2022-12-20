@@ -1,4 +1,3 @@
-import { ConnectButton } from "@rainbow-me/rainbowkit"
 import Image from "next/image"
 import { FC, useState } from "react"
 import { useSigner } from "wagmi"
@@ -35,41 +34,8 @@ const MintButton: FC<MintButtonProps> = () => {
     !loading && "hover:bg-blue-700"
   } text-white font-bold py-2 px-4 rounded`
   return (
-    <ConnectButton.Custom>
-      {({ account, chain, openChainModal, openConnectModal, mounted }) => {
-        const ready = mounted
-        const connected = ready && account && chain
-
-        return (
-          <div
-            {...(!ready && {
-              "aria-hidden": true,
-              style: {
-                opacity: 0,
-                pointerEvents: "none",
-                userSelect: "none",
-              },
-            })}
-          >
-            {(() => {
-              if (!connected) {
-                return (
-                  <button onClick={openConnectModal} type="button" className={className}>
-                    Connect Wallet
-                  </button>
-                )
-              }
-
-              if (chain.id !== Number(process.env.NEXT_PUBLIC_CHAIN_ID)) {
-                return (
-                  <button onClick={openChainModal} type="button" className={className}>
-                    Wrong network
-                  </button>
-                )
-              }
-
-              return (
-                <button
+    <>
+                    <button
                   type="button"
                   onClick={handleClick}
                   disabled={loading}
@@ -81,13 +47,12 @@ const MintButton: FC<MintButtonProps> = () => {
                     "Mint"
                   )}
                 </button>
-              )
-            })()}
+              
+  
             {startConfetti && <Confetti width={width} height={height} />}
-          </div>
-        )
-      }}
-    </ConnectButton.Custom>
+
+    </>
+        
   )
 }
 
