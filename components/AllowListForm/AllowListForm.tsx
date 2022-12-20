@@ -1,5 +1,4 @@
 import { FC } from "react"
-import abi from "../../lib/abi-allow-list.json"
 import MintButton from "../MintButton"
 
 interface AllowListFormProps {
