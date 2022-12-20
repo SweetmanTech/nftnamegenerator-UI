@@ -35,24 +35,12 @@ const MintButton: FC<MintButtonProps> = () => {
   } text-white font-bold py-2 px-4 rounded`
   return (
     <>
-                    <button
-                  type="button"
-                  onClick={handleClick}
-                  disabled={loading}
-                  className={className}
-                >
-                  {loading ? (
-                    <Image src="/spinner.gif" alt="spinner" width={50} height={50} />
-                  ) : (
-                    "Mint"
-                  )}
-                </button>
-              
-  
-            {startConfetti && <Confetti width={width} height={height} />}
+      <button type="button" onClick={handleClick} disabled={loading} className={className}>
+        {loading ? <Image src="/spinner.gif" alt="spinner" width={50} height={50} /> : "Mint"}
+      </button>
 
+      {startConfetti && <Confetti width={width} height={height} />}
     </>
-        
   )
 }
 
