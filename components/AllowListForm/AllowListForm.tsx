@@ -1,36 +1,20 @@
 import { FC } from "react"
-import MintButton from "../MintButton"
 import abi from "../../lib/abi-allow-list.json"
 import ThirdWebMintButton from "../ThirdWebMintButton"
 
 interface AllowListFormProps {
-  walletAddress: string
-  setWalletAddress?: (value: string) => void
   twitterHandle: string
   setTwitterHandle: (value: string) => void
-  whyCre8or: string
-  setWhyCre8or: (value: string) => void
-  creatorType: string
-  setCreatorType: (value: string) => void
-  handleSignUp: () => void
   loading: boolean
 }
 const AllowListForm: FC<AllowListFormProps> = ({
-  walletAddress,
-  setWalletAddress,
   twitterHandle,
   setTwitterHandle,
-  whyCre8or,
-  setWhyCre8or,
-  creatorType,
-  setCreatorType,
-  handleSignUp,
   loading,
 }) => {
   const displayBorder = (value: string) => !value?.length && "border-red-500"
   const displayRequiredText = (value: string, message: string) =>
     !value?.length && <p className="text-xs italic text-red-500">{message}</p>
-  const disabled = !twitterHandle?.length
   return (
     <div className="w-full max-w-xl">
       <form
