@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   // const { query } = req
   // const { name, description, imageUri, recipient } = query
   try {
-    axios.post(process.env.DEFENDER_AUTOTASK_WEBHOOK, {
+    await axios.post(process.env.DEFENDER_AUTOTASK_WEBHOOK, {
       name: "NAME FROM API",
       description: "relay description from POSTMAN",
       imageUri:
