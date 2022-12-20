@@ -3,17 +3,16 @@ import Image from "next/image"
 import { FC, useState } from "react"
 import { useSigner } from "wagmi"
 import Confetti from "react-confetti"
-import { ContractInterface } from "ethers/lib/ethers"
-import purchase from "../../lib/purchase"
+import axios from "axios"
 import useWindowSize from "../../lib/useWindowSize"
 
 interface MintButtonProps {
-  contractAddress: string
-  abi: ContractInterface
-  formResponse?: string
+  name?: string
+  description?: string
+  imageUri?: string
   resetFormResponse?: (value: string) => void
 }
-const MintButton: FC<MintButtonProps> = ({ contractAddress, abi }) => {
+const MintButton: FC<MintButtonProps> = () => {
   const [loading, setLoading] = useState(false)
   const [startConfetti, setStartConfetti] = useState(false)
   const { data: signer } = useSigner()
@@ -22,8 +21,8 @@ const MintButton: FC<MintButtonProps> = ({ contractAddress, abi }) => {
   const handleClick = async () => {
     if (!signer) return
     setLoading(true)
-    const receipt = await purchase(contractAddress, signer, abi, "name", "desc", "ipfs://bafybeidyqy7n2defa767w64g4oj4n63whgfl7mtigwqq6co3i6kg4qlo5u/lilnoun-6473.png")
-    if (!receipt.error) {
+    const receipt = (await axios.get("/api/mint?name=MINT BUTTON COMPONENT")) as any
+    if (!receipt?.error) {
       setStartConfetti(true)
       setTimeout(() => {
         setStartConfetti(false)

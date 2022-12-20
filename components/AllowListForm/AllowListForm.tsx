@@ -1,6 +1,6 @@
 import { FC } from "react"
 import abi from "../../lib/abi-allow-list.json"
-import ThirdWebMintButton from "../ThirdWebMintButton"
+import MintButton from "../MintButton"
 
 interface AllowListFormProps {
   twitterHandle: string
@@ -36,7 +36,11 @@ const AllowListForm: FC<AllowListFormProps> = ({
           />
           {displayRequiredText(twitterHandle, "Please enter a twitter handle.")}
         </div>
-        <ThirdWebMintButton contractAddress="0x8f4ee27aa859d7d2ed9e0e38e9b09e8c896afa70" abi={abi} name="NAME" description="DESCRIPTION" imageUri="ipfs://bafybeidyqy7n2defa767w64g4oj4n63whgfl7mtigwqq6co3i6kg4qlo5u/lilnoun-6473.png" handleError={() => console.log("ERROR")} handleSuccess={() => console.log("SUCCESS")} />
+        <MintButton
+          name="NAME" 
+          description="DESCRIPTION" 
+          imageUri="ipfs://bafybeidyqy7n2defa767w64g4oj4n63whgfl7mtigwqq6co3i6kg4qlo5u/lilnoun-6473.png" 
+        />
       </form>
       <p className="text-xs text-center text-gray-500">&copy;2022 DEFIENT. All rights reserved.</p>
     </div>
