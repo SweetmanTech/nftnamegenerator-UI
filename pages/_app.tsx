@@ -6,7 +6,6 @@ import { allChains, configureChains, createClient, WagmiConfig } from "wagmi"
 import { publicProvider } from "wagmi/providers/public"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-import { ThirdwebProvider } from "@thirdweb-dev/react"
 
 const { chains, provider, webSocketProvider } = configureChains(
   allChains.filter(
@@ -33,19 +32,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider modalSize="compact" chains={chains}>
-        <ThirdwebProvider
-          desiredChainId={Number(process.env.NEXT_PUBLIC_CHAIN_ID)}
-          sdkOptions={{
-            gasless: {
-              openzeppelin: {
-                relayerUrl: "https://api.defender.openzeppelin.com/autotasks/...",
-              },
-            },
-          }}
-        >
-          <Component {...pageProps} />
-          <ToastContainer />
-        </ThirdwebProvider>
+        <Component {...pageProps} />
+        <ToastContainer />
       </RainbowKitProvider>
     </WagmiConfig>
   )
