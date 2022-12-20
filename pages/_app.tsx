@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         >
           <Component {...pageProps} />
           <ToastContainer />
-        </ThirdwebProvider> 
+        </ThirdwebProvider>
       </RainbowKitProvider>
     </WagmiConfig>
   )
