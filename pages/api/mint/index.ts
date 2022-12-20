@@ -4,7 +4,8 @@ export default async function handler(req, res) {
   await axios.post(process.env.DEFENDER_AUTOTASK_WEBHOOK, {
     name: "NAME FROM API",
     description: "relay description from POSTMAN",
-    imageUri: "ipfs://bafybeidyqy7n2defa767w64g4oj4n63whgfl7mtigwqq6co3i6kg4qlo5u/lilnoun-6473.png"
+    imageUri: "ipfs://bafybeidyqy7n2defa767w64g4oj4n63whgfl7mtigwqq6co3i6kg4qlo5u/lilnoun-6473.png",
+    recipient: "0xcfBf34d385EA2d5Eb947063b67eA226dcDA3DC38"
 })
   res.status(200).json({ name: 'John Doe' })
 }
