@@ -6,11 +6,7 @@ interface AllowListFormProps {
   setTwitterHandle: (value: string) => void
   loading: boolean
 }
-const AllowListForm: FC<AllowListFormProps> = ({
-  twitterHandle,
-  setTwitterHandle,
-  loading,
-}) => {
+const AllowListForm: FC<AllowListFormProps> = ({ twitterHandle, setTwitterHandle, loading }) => {
   const displayBorder = (value: string) => !value?.length && "border-red-500"
   const displayRequiredText = (value: string, message: string) =>
     !value?.length && <p className="text-xs italic text-red-500">{message}</p>
@@ -36,9 +32,9 @@ const AllowListForm: FC<AllowListFormProps> = ({
           {displayRequiredText(twitterHandle, "Please enter a twitter handle.")}
         </div>
         <MintButton
-          name="NAME" 
-          description="DESCRIPTION" 
-          imageUri="ipfs://bafybeidyqy7n2defa767w64g4oj4n63whgfl7mtigwqq6co3i6kg4qlo5u/lilnoun-6473.png" 
+          name="NAME"
+          description="DESCRIPTION"
+          imageUri="ipfs://bafybeidyqy7n2defa767w64g4oj4n63whgfl7mtigwqq6co3i6kg4qlo5u/lilnoun-6473.png"
         />
       </form>
       <p className="text-xs text-center text-gray-500">&copy;2022 DEFIENT. All rights reserved.</p>
