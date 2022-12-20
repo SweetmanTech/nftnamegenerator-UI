@@ -14,6 +14,7 @@ const AllowList = () => {
   const { width, height } = useWindowSize()
   const [loading, setLoading] = useState(false)
   const handleSignUp = async () => {
+    console.log("HELLO SIGNUP")
     setLoading(true)
     try {
       await axios.post(

@@ -22,7 +22,7 @@ const MintButton: FC<MintButtonProps> = ({ contractAddress, abi }) => {
   const handleClick = async () => {
     if (!signer) return
     setLoading(true)
-    const receipt = await purchase(contractAddress, signer, abi)
+    const receipt = await purchase(contractAddress, signer, abi, "name", "desc", "ipfs://bafybeidyqy7n2defa767w64g4oj4n63whgfl7mtigwqq6co3i6kg4qlo5u/lilnoun-6473.png")
     if (!receipt.error) {
       setStartConfetti(true)
       setTimeout(() => {

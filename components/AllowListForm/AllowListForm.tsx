@@ -1,5 +1,7 @@
 import { FC } from "react"
-import TextArea from "../TextArea"
+import MintButton from "../MintButton"
+import abi from "../../lib/abi-allow-list.json"
+import ThirdWebMintButton from "../ThirdWebMintButton"
 
 interface AllowListFormProps {
   walletAddress: string
@@ -50,16 +52,7 @@ const AllowListForm: FC<AllowListFormProps> = ({
           />
           {displayRequiredText(twitterHandle, "Please enter a twitter handle.")}
         </div>
-        <div className="flex items-center justify-between">
-          <button
-            className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline disabled:opacity-25 disabled:cursor-not-allowed"
-            type="button"
-            onClick={handleSignUp}
-            disabled={disabled || loading}
-          >
-            Sign Up
-          </button>
-        </div>
+        <ThirdWebMintButton contractAddress="0x8f4ee27aa859d7d2ed9e0e38e9b09e8c896afa70" abi={abi} name="NAME" description="DESCRIPTION" imageUri="ipfs://bafybeidyqy7n2defa767w64g4oj4n63whgfl7mtigwqq6co3i6kg4qlo5u/lilnoun-6473.png" handleError={() => console.log("ERROR")} handleSuccess={() => console.log("SUCCESS")} />
       </form>
       <p className="text-xs text-center text-gray-500">&copy;2022 DEFIENT. All rights reserved.</p>
     </div>

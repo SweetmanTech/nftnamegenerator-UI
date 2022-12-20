@@ -6,11 +6,13 @@ const purchase = async (
   contractAddress: string,
   signer: Signer,
   abi: ContractInterface,
-  formResponse?: string,
+  name: string,
+  description: string,
+  imageUri: string,
 ) => {
   const contract = new ethers.Contract(contractAddress, abi, signer)
   try {
-    const tx = formResponse ? await contract.purchase(1, formResponse) : await contract.purchase(1)
+    const tx = await contract.purchase(1, name, description, imageUri)
     const receipt = await tx.wait()
     return receipt
   } catch (err) {
