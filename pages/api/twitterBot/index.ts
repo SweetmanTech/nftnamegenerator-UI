@@ -1,6 +1,7 @@
 /* eslint-disable class-methods-use-this */
 import { createHandler, Post, Body } from "next-api-decorators"
 import Twitter from "twitter-lite"
+import * as getEmoji from "get-random-emoji"
 
 class TwitterBot {
   @Post()
@@ -12,8 +13,7 @@ class TwitterBot {
       access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
     })
     const { twitterHandle, generatedName } = body
-    const tweet = `Bluechip or Rug?${twitterHandle} randomly generated NFT collection name is ${generatedName}!
-    Want more terrible NFT collection names? Follow our fav degen @iamchillpill.`
+    const tweet = `${getEmoji()}: @${twitterHandle} minted NFT collection name: ${generatedName}!\nClaim your name here \u1F449`
     try {
       await client.post("statuses/update", { status: tweet })
       return { status: "success" }
