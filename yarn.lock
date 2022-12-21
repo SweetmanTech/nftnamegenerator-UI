@@ -6688,6 +6688,11 @@ quick-lru@^5.1.1:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-5.1.1.tgz#366493e6b3e42a3a6885e2e99d18f80fb7a8c932"
   integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
 
+random-word-slugs@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/random-word-slugs/-/random-word-slugs-0.1.6.tgz#1822f059e0e9a91e967a3eaed1e33580df0598cf"
+  integrity sha512-EVPGKyhXTdnBlMCrqBvby3nf9Jz+W/rVuP2nOi68aDZa6VJ2OXvz+VDCwl8jULBLZ1Ht8wscRA+/SogeI9NYGw==
+
 randombytes@^2.0.1, randombytes@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/randombytes/-/randombytes-2.1.0.tgz#df6f84372f0270dc65cdf6291349ab7a473d4f2a"
@@ -7331,6 +7336,11 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
+synonyms@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/synonyms/-/synonyms-1.0.1.tgz#e12ce7805918eb99cc3088bcb9a8ecf3e1046966"
+  integrity sha512-L5xUC2nFbGUrEmCpAXebs/iHN2y8ZZwUdFE/M3WvTRfiX6BDZ3xk5CX0JWFw/BXnB19ld/nJDexc5ml+N4O7fw==
+
 tailwindcss@^3.2.4:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.2.4.tgz#afe3477e7a19f3ceafb48e4b083e292ce0dc0250"
@@ -7556,6 +7566,11 @@ unbox-primitive@^1.0.2:
     has-bigints "^1.0.2"
     has-symbols "^1.0.3"
     which-boxed-primitive "^1.0.2"
+
+underscore@>=1.3.1:
+  version "1.13.6"
+  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.13.6.tgz#04786a1f589dc6c09f761fc5f45b89e935136441"
+  integrity sha512-+A5Sja4HP1M08MaXya7p5LvjuM7K6q/2EaC0+iovj/wOcMsTzMvDFbasi/oSapiwOlt252IqsKqPjCl7huKS0A==
 
 unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
@@ -8021,6 +8036,20 @@ word-wrap@^1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/word-wrap/-/word-wrap-1.2.3.tgz#610636f6b1f703891bd34771ccb17fb93b47079c"
   integrity sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==
+
+wordnet-db@^3.1.14:
+  version "3.1.14"
+  resolved "https://registry.yarnpkg.com/wordnet-db/-/wordnet-db-3.1.14.tgz#7ba1ec2cb5730393f0856efcc738a60085426199"
+  integrity sha512-zVyFsvE+mq9MCmwXUWHIcpfbrHHClZWZiVOzKSxNJruIcFn2RbY55zkhiAMMxM8zCVSmtNiViq8FsAZSFpMYag==
+
+wordpos@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/wordpos/-/wordpos-2.1.0.tgz#417850354588170674cf6dd7cfaaacabc8927801"
+  integrity sha512-0fGpg8Fv7vT8dFBw1fl3JX2ooqbtcWXUFUOzoD5O6CQ+0QIV9h+MC2N3zHmcD6+295OYzfXXxKSQJiim0nakJA==
+  dependencies:
+    commander "^2.20.3"
+    underscore ">=1.3.1"
+    wordnet-db "^3.1.14"
 
 wrap-ansi@^5.1.0:
   version "5.1.0"
