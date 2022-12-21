@@ -35,9 +35,9 @@
     "react-confetti": "^6.1.0",
     "react-dom": "^18.1.0",
     "react-toastify": "^9.1.1",
-    "text-to-image": "^6.0.0",
-    "twitter-lite": "^1.1.0",
     "synonyms": "^1.0.1",
+    "text-to-image@next": "^6.0.0",
+    "twitter-lite": "^1.1.0",
     "wagmi": "^0.8.10"
   },
   "devDependencies": {
