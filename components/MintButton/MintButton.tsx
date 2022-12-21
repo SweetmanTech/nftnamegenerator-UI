@@ -51,15 +51,11 @@ const MintButton: FC<MintButtonProps> = () => {
       textAlign: "center",
       verticalAlign: "center",
     })
-    console.log("dataUri", dataUri)
     setImageUri(dataUri)
 
     // Usage example:
     const file = dataURLtoFile(dataUri, "a.png")
-    console.log(file)
-
     const ipfsUrl = await storeBlob(file)
-    console.log("ipfsUrl", ipfsUrl)
 
     const receipt = (await axios.get(`/api/mint?imageUri=${ipfsUrl}`)) as any
 
