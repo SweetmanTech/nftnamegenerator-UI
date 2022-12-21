@@ -30,12 +30,15 @@
     "next": "^12.2.2",
     "next-api-decorators": "^2.0.0",
     "nft.storage": "^7.0.0",
+    "random-word-slugs": "^0.1.6",
     "react": "^18.1.0",
     "react-confetti": "^6.1.0",
     "react-dom": "^18.1.0",
     "react-toastify": "^9.1.1",
     "text-to-image": "^6.0.0",
-    "twitter-lite": "^1.1.0"
+    "twitter-lite": "^1.1.0",
+    "synonyms": "^1.0.1",
+    "wagmi": "^0.8.10"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
