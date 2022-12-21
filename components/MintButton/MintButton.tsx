@@ -33,10 +33,11 @@ const MintButton: FC<MintButtonProps> = () => {
         image generated
       </Link>,
     )
-    const ipfsUri = (await axios.get(`/api/storeHostedFile?url=${url}`)) as any
-    console.log("ipfsUri", ipfsUri)
-    const file = await getHostedFile(url)
-    console.log("file", file)
+    console.log("url", url)
+    const hosted = (await axios.get(`/api/storeHostedFile?url=${url}`)) as any
+    console.log("hosted", hosted)
+    // const file = await getHostedFile(url)
+    // console.log("file", file)
     // const ipfs = await storeBlob(file)
     // toast.success(
     //   <Link href={url} target="__blank">
@@ -44,10 +45,10 @@ const MintButton: FC<MintButtonProps> = () => {
     //   </Link>,
     // )
     setImageUri(url)
-    const receipt = (await axios.get(
-      `/api/mint?imageUri=${url}?name=${"MINT BUTTON COMPONENT"}`,
-    )) as any
+    const receipt = (await axios.get(`/api/mint?imageUri=${url}"}`)) as any
+    console.log("receipt", receipt)
     const receiptJson = JSON.parse(receipt.data.result)
+    console.log("receiptJson.hash", receiptJson.hash)
     setTxHash(receiptJson.hash)
     if (!receipt?.error) {
       setStartConfetti(true)

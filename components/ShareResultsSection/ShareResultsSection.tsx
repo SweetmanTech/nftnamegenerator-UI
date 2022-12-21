@@ -13,7 +13,9 @@ const ShareResultsSection = (props: any) => {
 
   useEffect(() => {
     const init = async () => {
+      console.log("hash", hash)
       if (confirmedTx) {
+        console.log("GETTING OPENSEA URL")
         const nftResponse = (await axios.get(
           `/api/getNftsForOwner?owner=${"0xcfBf34d385EA2d5Eb947063b67eA226dcDA3DC38"}`,
         )) as any
