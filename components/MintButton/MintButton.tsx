@@ -1,6 +1,7 @@
 import { FC, useState } from "react"
 import Confetti from "react-confetti"
 import axios from "axios"
+import Image from "next/image"
 import useWindowSize from "../../lib/useWindowSize"
 import { storeBlob } from "../../lib/ipfs"
 
