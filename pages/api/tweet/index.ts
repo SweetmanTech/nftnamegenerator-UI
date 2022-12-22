@@ -26,9 +26,9 @@ class TwitterBot {
     const { twitterHandle, generatedName } = body
     const tweet = `${_.sample(
       EMOJIS,
-    )} @${twitterHandle} just minted the free randomly generated NFT collection name:\n\
+    )} @${twitterHandle} just minted the free randomly generated NFT name:\n\
     \n${_.startCase(_.lowerCase(generatedName))}\n\
-    \nIs it a bluechip or a rug? For more ridiculous NFT names follow @iamchillpill.`
+    \nIs it a bluechip or rug? For more ridiculous NFT collection names follow @iamchillpill.`
     try {
       const response = await client.v2.tweet(tweet, {
         poll: {
