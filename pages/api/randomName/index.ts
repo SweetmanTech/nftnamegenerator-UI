@@ -5,9 +5,6 @@ import * as synonyms from "synonyms"
 
 const options: RandomWordOptions<3> = {
   format: "lower",
-  categories: {
-    noun: ["animals", "transportation", "technology"],
-  },
   partsOfSpeech: ["adjective", "noun", "noun"],
 }
 class RandomName {
