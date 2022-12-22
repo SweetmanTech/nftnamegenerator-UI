@@ -19,7 +19,7 @@ class TwitterBot {
     try {
       const response = await client.v2.tweet(tweet, {
         poll: {
-          duration_minutes: 60,
+          duration_minutes: 2 * 24 * 60,
           options: ["Bluechip", "Rug"],
         },
       })
