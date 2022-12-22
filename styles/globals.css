@@ -18,3 +18,10 @@ a {
 * {
   box-sizing: border-box;
 }
+
+@font-face {
+  font-family: 'Aileron';
+  src: url('/Aileron-Regular.otf');
+  font-weight: 400;
+  font-style: normal;
+  }
