@@ -14,7 +14,7 @@ const EMOJIS = [
   "\uD83D\uDE4C",
   "\uD83D\uDD25",
 ]
-const transformTwitterHandle = (twitterHandle: string) => {
+const transformTwitterHandle = (twitterHandle?: string): string => {
   if (twitterHandle) {
     return _.startsWith(twitterHandle, "@", 0) ? twitterHandle : `@${twitterHandle}`
   }
