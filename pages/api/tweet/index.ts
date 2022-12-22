@@ -14,7 +14,6 @@ const EMOJIS = [
   "\uD83D\uDE4C",
   "\uD83D\uDD25",
 ]
-const getRandomEmoji = () => EMOJIS[Math.floor(Math.random() * EMOJIS.length)]
 class TwitterBot {
   @Post()
   async postTweet(@Body() body) {
@@ -25,7 +24,9 @@ class TwitterBot {
       accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
     })
     const { twitterHandle, generatedName } = body
-    const tweet = `${getRandomEmoji()} @${twitterHandle} just minted the free randomly generated NFT collection name:\n\
+    const tweet = `${_.sample(
+      EMOJIS,
+    )} @${twitterHandle} just minted the free randomly generated NFT collection name:\n\
     \n${_.startCase(_.lowerCase(generatedName))}\n\
     \nIs it a bluechip or a rug? For more ridiculous NFT names follow @iamchillpill.`
     try {
