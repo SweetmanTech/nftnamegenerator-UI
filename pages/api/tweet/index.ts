@@ -1,8 +1,20 @@
 /* eslint-disable class-methods-use-this */
 import { createHandler, Post, Body } from "next-api-decorators"
-import * as getEmoji from "get-random-emoji"
 import { TwitterApi } from "twitter-api-v2"
+import { _ } from "lodash"
 
+const EMOJIS = [
+  "\uD83E\uDD73",
+  "\uD83D\uDCAF",
+  "\uD83D\uDE33",
+  "\uD83D\uDC4F",
+  "\uD83E\uDEE3",
+  "\uD83D\uDEA8",
+  "\uD83D\uDC40",
+  "\uD83D\uDE4C",
+  "\uD83D\uDD25",
+]
+const getRandomEmoji = () => EMOJIS[Math.floor(Math.random() * EMOJIS.length)]
 class TwitterBot {
   @Post()
   async postTweet(@Body() body) {
@@ -13,9 +25,9 @@ class TwitterBot {
       accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
     })
     const { twitterHandle, generatedName } = body
-    const tweet = `${getEmoji()}: @${twitterHandle} minted NFT collection name: ${generatedName}!\nClaim your name here \uD83D\uDC49 generate.defient.co\
-    \nFor updates click here \uD83D\uDC49 @iamchillpill\
-    \nPoll:`
+    const tweet = `${getRandomEmoji()} @${twitterHandle} just minted the free randomly generated NFT collection name:\n\
+    \n${_.startCase(_.lowerCase(generatedName))}\n\
+    \nIs it a bluechip or a rug? For more ridiculous NFT names follow @iamchillpill.`
     try {
       const response = await client.v2.tweet(tweet, {
         poll: {
