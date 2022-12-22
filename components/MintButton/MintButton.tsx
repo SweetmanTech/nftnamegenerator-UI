@@ -15,6 +15,13 @@ const MintButton: FC<MintButtonProps> = () => {
   const [startConfetti, setStartConfetti] = useState(false)
   const { width, height } = useWindowSize()
 
+  const postTweet = async (twitterHandle: string, generatedName: string) => {
+    const response = await axios.post("/api/tweet", {
+      twitterHandle,
+      generatedName,
+    })
+    return response
+  }
   const handleClick = async () => {
     setLoading(true)
     const receipt = (await axios.get("/api/mint?name=MINT BUTTON COMPONENT")) as any
@@ -24,6 +31,7 @@ const MintButton: FC<MintButtonProps> = () => {
         setStartConfetti(false)
       }, 5000)
     }
+    await postTweet("twitterHandle", "generatedName")
     setLoading(false)
   }
 
