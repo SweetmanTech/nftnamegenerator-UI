@@ -1,25 +1,18 @@
 import { FC, useState } from "react"
 import Confetti from "react-confetti"
 import axios from "axios"
-import Image from "next/image"
 import useWindowSize from "../../lib/useWindowSize"
 import { storeBlob } from "../../lib/ipfs"
 
-const textToImage = require("text-to-image")
-
 interface MintButtonProps {
-  name?: string
-  description?: string
-  imageUri?: string
-  resetFormResponse?: (value: string) => void
+  twitterHandle?: string
+  imageUri: string
   generatedName?: string
 }
-const MintButton: FC<MintButtonProps> = () => {
+const MintButton: FC<MintButtonProps> = ({ twitterHandle, generatedName, imageUri }) => {
   const [loading, setLoading] = useState(false)
   const [startConfetti, setStartConfetti] = useState(false)
   const { width, height } = useWindowSize()
-  const [name, setName] = useState("")
-  const [imageUri, setImageUri] = useState()
 
   function dataURLtoFile(dataurl, filename) {
     const arr = dataurl.split(",")
@@ -35,7 +28,7 @@ const MintButton: FC<MintButtonProps> = () => {
     return new File([u8arr], filename, { type: mime })
   }
 
-  const postTweet = async (twitterHandle: string, generatedName: string) => {
+  const postTweet = async () => {
     const response = await axios.post("/api/tweet", {
       twitterHandle,
       generatedName,
@@ -44,25 +37,9 @@ const MintButton: FC<MintButtonProps> = () => {
   }
   const handleClick = async () => {
     setLoading(true)
-    const generatedName = await axios.get("/api/randomName")
-    setName(generatedName.data)
-    const dataUri = await textToImage.generate(generatedName.data, {
-      debug: true,
-      fontSize: 58,
-      fontFamily: "Aileron",
-      lineHeight: 58,
-      margin: 5,
-      customHeight: 500,
-      maxWidth: 500,
-      bgColor: "black",
-      textColor: "white",
-      textAlign: "center",
-      verticalAlign: "center",
-    })
-    setImageUri(dataUri)
 
     // Usage example:
-    const file = dataURLtoFile(dataUri, "a.png")
+    const file = dataURLtoFile(imageUri, "a.png")
     const ipfsUrl = await storeBlob(file)
 
     const receipt = (await axios.get(`/api/mint?imageUri=${ipfsUrl}`)) as any
@@ -73,7 +50,7 @@ const MintButton: FC<MintButtonProps> = () => {
         setStartConfetti(false)
       }, 5000)
     }
-    await postTweet("twitterHandle", "generatedName")
+    await postTweet()
     setLoading(false)
   }
 
@@ -103,9 +80,6 @@ const MintButton: FC<MintButtonProps> = () => {
         )}
         {loading ? "Minting" : "Let's Mint"}
       </button>
-      <div>{name}</div>
-      {imageUri && <Image src={imageUri} alt="spinner" width={50} height={50} />}
-
       {startConfetti && <Confetti width={width} height={height} />}
     </>
   )
