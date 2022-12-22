@@ -54,7 +54,14 @@ const MintButton: FC<MintButtonProps> = ({ twitterHandle, generatedName, imageUr
     }
     const tweetResponse = await postTweet()
     router.push(
-      { pathname: "/Results", query: { imageUri, tweetId: tweetResponse.data.data.id } },
+      {
+        pathname: "/Results",
+        query: {
+          imageUri,
+          tweetId: tweetResponse.data.data.id,
+          text: tweetResponse.data.data.text,
+        },
+      },
       "/Results",
     )
     setLoading(false)

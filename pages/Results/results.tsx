@@ -1,8 +1,7 @@
-import { TwitterTweetEmbed } from "react-twitter-embed"
-import Image from "next/future/image"
+/* eslint-disable @next/next/no-img-element */
 import { useRouter } from "next/router"
 import { useState } from "react"
-
+import { Tweet, Share } from "react-twitter-widgets"
 import SkeletonCard from "../../components/SkeletonCard"
 
 const Results = () => {
@@ -16,29 +15,36 @@ const Results = () => {
       <h2 className="mt-0 mb-2 text-5xl font-normal leading-normal text-center text-black-800">
         Your NFT is now minted!
       </h2>
-      <div className="flex flex-wrap items-center content-center justify-center">
+      <div className="flex flex-wrap items-center content-center justify-center w-full">
         <div className="grid grid-cols-1 gap-5 p-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
           {/* <!--Card 1--> */}
-          <div className="overflow-hidden rounded">
+          <div className="p-2 overflow-hidden bg-white rounded flex-center">
             {loading && <SkeletonCard />}
-            <TwitterTweetEmbed
-              tweetId={String(router.query.tweetId)}
-              onLoad={() => setLoading(false)}
-            />
+            <div className="justify-center text-center">
+              <Tweet tweetId={String(router.query.tweetId)} onLoad={() => setLoading(false)} />
+              <Share url=" " options={{ text: String(router.query.text), size: "large" }} />
+            </div>
           </div>
           {/* <!--Card 2--> */}
           {loading && <SkeletonCard />}
           {!loading && (
-            <Image
-              className="object-fill "
-              src={String(router.query.imageUri)}
-              alt="generated image"
-              width={478}
-              height={478}
-              sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"
-            />
+            <div className="max-w-sm bg-white rounded ">
+              <a href="#!">
+                <img className="rounded-t-lg" src={String(router.query.imageUri)} alt="" />
+              </a>
+              <div className="p-6">
+                <h5 className="mb-2 text-xl font-medium text-gray-900">
+                  Generated NFT Collection Name
+                </h5>
+                <p className="mb-4 text-base text-gray-700">View on OpenSea</p>
+                <button
+                  type="button"
+                  className=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                >
+                  View
+                </button>
+              </div>
+            </div>
           )}
         </div>
       </div>
