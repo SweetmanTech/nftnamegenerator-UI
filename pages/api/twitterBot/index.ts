@@ -1,22 +1,29 @@
 /* eslint-disable class-methods-use-this */
 import { createHandler, Post, Body } from "next-api-decorators"
-import Twitter from "twitter-lite"
 import * as getEmoji from "get-random-emoji"
+import { TwitterApi } from "twitter-api-v2"
 
 class TwitterBot {
   @Post()
   async postTweet(@Body() body) {
-    const client = new Twitter({
-      consumer_key: process.env.TWITTER_CONSUMER_KEY,
-      consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-      access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-      access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
+    const client = new TwitterApi({
+      appKey: process.env.TWITTER_CONSUMER_KEY,
+      appSecret: process.env.TWITTER_CONSUMER_SECRET,
+      accessToken: process.env.TWITTER_ACCESS_TOKEN_KEY,
+      accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
     })
     const { twitterHandle, generatedName } = body
-    const tweet = `${getEmoji()}: @${twitterHandle} minted NFT collection name: ${generatedName}!\nClaim your name here \u1F449`
+    const tweet = `${getEmoji()}: @${twitterHandle} minted NFT collection name: ${generatedName}!\nClaim your name here \uD83D\uDC49 generate.defient.co\
+    \nFor updates click here \uD83D\uDC49 @iamchillpill\
+    \nPoll:`
     try {
-      await client.post("statuses/update", { status: tweet })
-      return { status: "success" }
+      const response = await client.v2.tweet(tweet, {
+        poll: {
+          duration_minutes: 60,
+          options: ["Bluechip", "Rug"],
+        },
+      })
+      return response
     } catch (e) {
       throw new Error(e)
     }
