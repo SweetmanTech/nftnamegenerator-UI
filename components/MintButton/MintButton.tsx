@@ -1,6 +1,7 @@
 import { FC, useState } from "react"
 import Confetti from "react-confetti"
 import axios from "axios"
+import { useRouter } from "next/router"
 import useWindowSize from "../../lib/useWindowSize"
 import { storeBlob } from "../../lib/ipfs"
 
@@ -10,6 +11,7 @@ interface MintButtonProps {
   generatedName?: string
 }
 const MintButton: FC<MintButtonProps> = ({ twitterHandle, generatedName, imageUri }) => {
+  const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [startConfetti, setStartConfetti] = useState(false)
   const { width, height } = useWindowSize()
@@ -50,7 +52,11 @@ const MintButton: FC<MintButtonProps> = ({ twitterHandle, generatedName, imageUr
         setStartConfetti(false)
       }, 5000)
     }
-    await postTweet()
+    const tweetResponse = await postTweet()
+    router.push(
+      { pathname: "/Results", query: { imageUri, tweetId: tweetResponse.data.data.id } },
+      "/Results",
+    )
     setLoading(false)
   }
 
