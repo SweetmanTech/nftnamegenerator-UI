@@ -16,8 +16,8 @@ const Results = () => {
       <h2 className="mt-0 mb-2 text-5xl font-normal leading-normal text-center text-black-800">
         Your NFT is now minted!
       </h2>
-      <div className="flex flex-wrap items-center justify-center">
-        <div className="grid grid-cols-1 gap-5 p-10 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
+      <div className="flex flex-wrap items-center content-center justify-center">
+        <div className="grid grid-cols-1 gap-5 p-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
           {/* <!--Card 1--> */}
           <div className="overflow-hidden rounded">
             {loading && <SkeletonCard />}
