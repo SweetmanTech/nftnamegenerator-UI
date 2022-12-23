@@ -5,12 +5,12 @@ import { useRouter } from "next/router"
 import useWindowSize from "../../lib/useWindowSize"
 import { storeBlob } from "../../lib/ipfs"
 
+const textToImage = require("text-to-image")
+
 interface MintButtonProps {
   twitterHandle?: string
-  imageUri: string
-  generatedName?: string
 }
-const MintButton: FC<MintButtonProps> = ({ twitterHandle, generatedName, imageUri }) => {
+const MintButton: FC<MintButtonProps> = ({ twitterHandle }) => {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [startConfetti, setStartConfetti] = useState(false)
@@ -30,7 +30,7 @@ const MintButton: FC<MintButtonProps> = ({ twitterHandle, generatedName, imageUr
     return new File([u8arr], filename, { type: mime })
   }
 
-  const postTweet = async () => {
+  const postTweet = async (generatedName) => {
     const response = await axios.post("/api/tweet", {
       twitterHandle,
       generatedName,
@@ -41,7 +41,21 @@ const MintButton: FC<MintButtonProps> = ({ twitterHandle, generatedName, imageUr
     setLoading(true)
 
     // Usage example:
-    const file = dataURLtoFile(imageUri, "a.png")
+    const response = await axios.get("/api/randomName")
+    const dataUri = await textToImage.generate(response.data, {
+      debug: true,
+      fontSize: 58,
+      fontFamily: "Aileron",
+      lineHeight: 58,
+      margin: 5,
+      customHeight: 500,
+      maxWidth: 500,
+      bgColor: "black",
+      textColor: "white",
+      textAlign: "center",
+      verticalAlign: "center",
+    })
+    const file = dataURLtoFile(dataUri, "a.png")
     const ipfsUrl = await storeBlob(file)
 
     const receipt = (await axios.get(`/api/mint?imageUri=${ipfsUrl}`)) as any
@@ -52,12 +66,12 @@ const MintButton: FC<MintButtonProps> = ({ twitterHandle, generatedName, imageUr
         setStartConfetti(false)
       }, 5000)
     }
-    const tweetResponse = await postTweet()
+    const tweetResponse = await postTweet(response.data)
     router.push(
       {
         pathname: "/Results",
         query: {
-          imageUri,
+          imageUri: dataUri,
           tweetId: tweetResponse.data.data.id,
           text: tweetResponse.data.data.text,
         },
