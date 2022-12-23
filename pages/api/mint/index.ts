@@ -3,7 +3,6 @@ import axios from "axios"
 export default async function handler(req, res) {
   const { query } = req
   const { name, description, imageUri, recipient } = query
-  console.log("description PARAM", description)
   try {
     await axios.post(process.env.DEFENDER_AUTOTASK_WEBHOOK, {
       name: name || "nft name generator",
