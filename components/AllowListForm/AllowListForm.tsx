@@ -1,5 +1,4 @@
 import { FC } from "react"
-import _ from "lodash"
 import MintButton from "../MintButton"
 
 interface AllowListFormProps {
