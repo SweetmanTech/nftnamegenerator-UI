@@ -2,6 +2,7 @@
 import { createHandler, Post, Body } from "next-api-decorators"
 import { TwitterApi } from "twitter-api-v2"
 import { _ } from "lodash"
+import transformTwitterHandle from "../../../lib/transformTwitterHandle"
 
 const EMOJIS = [
   "\uD83E\uDD73",
@@ -14,12 +15,7 @@ const EMOJIS = [
   "\uD83D\uDE4C",
   "\uD83D\uDD25",
 ]
-const transformTwitterHandle = (twitterHandle?: string): string => {
-  if (twitterHandle) {
-    return _.startsWith(twitterHandle, "@", 0) ? twitterHandle : `@${twitterHandle}`
-  }
-  return "anonymous"
-}
+
 class TwitterBot {
   @Post()
   async postTweet(@Body() body) {
