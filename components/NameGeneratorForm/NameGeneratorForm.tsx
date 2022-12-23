@@ -1,14 +1,14 @@
 import { FC } from "react"
 import MintButton from "../MintButton"
 
-interface AllowListFormProps {
+interface NameGeneratorFormProps {
   twitterHandle: string
   setTwitterHandle: (value: string) => void
   publicWallet: string
   setPublicWallet: (value: string) => void
   loading: boolean
 }
-const AllowListForm: FC<AllowListFormProps> = ({
+const NameGeneratorForm: FC<NameGeneratorFormProps> = ({
   twitterHandle,
   setTwitterHandle,
   loading,
@@ -55,4 +55,4 @@ const AllowListForm: FC<AllowListFormProps> = ({
   </div>
 )
 
-export default AllowListForm
+export default NameGeneratorForm
