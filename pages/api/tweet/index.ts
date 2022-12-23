@@ -14,6 +14,12 @@ const EMOJIS = [
   "\uD83D\uDE4C",
   "\uD83D\uDD25",
 ]
+const transformTwitterHandle = (twitterHandle?: string): string => {
+  if (twitterHandle) {
+    return _.startsWith(twitterHandle, "@", 0) ? twitterHandle : `@${twitterHandle}`
+  }
+  return "anonymous"
+}
 class TwitterBot {
   @Post()
   async postTweet(@Body() body) {
@@ -24,9 +30,10 @@ class TwitterBot {
       accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
     })
     const { twitterHandle, generatedName } = body
-    const tweet = `${_.sample(
-      EMOJIS,
-    )} @${twitterHandle} just minted the free randomly generated NFT name:\n\
+
+    const tweet = `${_.sample(EMOJIS)} ${transformTwitterHandle(
+      twitterHandle,
+    )} just minted the free randomly generated NFT name:\n\
     \n${_.startCase(_.lowerCase(generatedName))}\n\
     \nIs it a bluechip or rug? For more ridiculous NFT collection names follow @iamchillpill.`
     try {
