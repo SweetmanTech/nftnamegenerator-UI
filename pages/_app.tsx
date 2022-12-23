@@ -32,10 +32,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider modalSize="compact" chains={chains}>
-        <div className="bg-cover bg-hero-pattern">
-          <Component {...pageProps} />
-          <ToastContainer />
-        </div>
+        <Component {...pageProps} />
+        <ToastContainer />
       </RainbowKitProvider>
     </WagmiConfig>
   )
