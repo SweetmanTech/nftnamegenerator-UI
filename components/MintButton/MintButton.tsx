@@ -55,12 +55,10 @@ const MintButton: FC<MintButtonProps> = ({ twitterHandle }) => {
       textAlign: "center",
       verticalAlign: "center",
     })
-    console.log("data uri", dataUri)
     const file = dataURLtoFile(dataUri, "a.png")
     const ipfsUrl = await storeBlob(file)
 
     const receipt = (await axios.get(`/api/mint?imageUri=${ipfsUrl}`)) as any
-    console.log("receipt", receipt)
 
     if (!receipt?.error) {
       setStartConfetti(true)
@@ -68,9 +66,7 @@ const MintButton: FC<MintButtonProps> = ({ twitterHandle }) => {
         setStartConfetti(false)
       }, 5000)
     }
-    console.log("posting tweet", response.data)
     const tweetResponse = await postTweet(response.data)
-    console.log("tweetResponse", tweetResponse)
     router.push(
       {
         pathname: "/Results",
