@@ -42,7 +42,8 @@ const MintButton: FC<MintButtonProps> = ({ twitterHandle }) => {
 
     // Usage example:
     const response = await axios.get("/api/randomName")
-    const dataUri = await textToImage.generate(response.data, {
+    const generated = response.data
+    const dataUri = await textToImage.generate(generated, {
       debug: true,
       fontSize: 58,
       fontFamily: "Aileron",
@@ -58,7 +59,7 @@ const MintButton: FC<MintButtonProps> = ({ twitterHandle }) => {
     const file = dataURLtoFile(dataUri, "a.png")
     const ipfsUrl = await storeBlob(file)
 
-    const receipt = (await axios.get(`/api/mint?imageUri=${ipfsUrl}`)) as any
+    const receipt = (await axios.get(`/api/mint?imageUri=${ipfsUrl}&name=${generated}`)) as any
 
     if (!receipt?.error) {
       setStartConfetti(true)
@@ -66,7 +67,7 @@ const MintButton: FC<MintButtonProps> = ({ twitterHandle }) => {
         setStartConfetti(false)
       }, 5000)
     }
-    const tweetResponse = await postTweet(response.data)
+    const tweetResponse = await postTweet(generated)
     router.push(
       {
         pathname: "/Results",

@@ -3,6 +3,7 @@ import axios from "axios"
 export default async function handler(req, res) {
   const { query } = req
   const { name, description, imageUri, recipient } = query
+  console.log("NAME PARAM", name)
   try {
     await axios.post(process.env.DEFENDER_AUTOTASK_WEBHOOK, {
       name: name || "NAME FROM API",
