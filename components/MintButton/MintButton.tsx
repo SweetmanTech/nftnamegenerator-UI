@@ -81,9 +81,9 @@ const MintButton: FC<MintButtonProps> = ({ twitterHandle }) => {
     setLoading(false)
   }
 
-  const className = `${loading ? "bg-blue-500/50" : "bg-blue-500"} ${
-    !loading && "hover:bg-blue-700"
-  } focus:ring-4 foucus:ring-blue-300 text-white font-bold py-2.5 px-5 rounded text-center inline-flex items-center`
+  const className = `${loading ? "bg-gray-500/50" : "bg-gray-700"} ${
+    !loading && "hover:bg-black-700"
+  } focus:ring-4 foucus:ring-blue-300 text-white text-3xl font-bold py-3 px-14 rounded-xl text-center inline-flex items-center`
   return (
     <>
       <button type="button" onClick={handleClick} disabled={loading} className={className}>
@@ -105,7 +105,7 @@ const MintButton: FC<MintButtonProps> = ({ twitterHandle }) => {
             />
           </svg>
         )}
-        {loading ? "Minting" : "Let's Mint"}
+        {loading ? "GENERATING..." : "GENERATE"}
       </button>
       {startConfetti && <Confetti width={width} height={height} />}
     </>
