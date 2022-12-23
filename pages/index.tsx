@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.css"
 import NFTNameGenerator from "../components/NFTNameGenerator"
 
 const Home: NextPage = () => (
-  <div className="max-w-full bg-cover bg-hero-pattern">
+  <div className="max-w-full bg-cover lg:bg-hero-pattern md:bg-hero-pattern bg-mobile-pattern">
     <SeoHead
       title="nft name generator"
       description="use AI to inspire your next nft drop"

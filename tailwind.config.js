@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         "hero-pattern": "url('/images/BACKGROUND.png')",
+        "mobile-pattern": "url('/images/MOBILEBACKGROUND.png')",
       },
     },
   },
