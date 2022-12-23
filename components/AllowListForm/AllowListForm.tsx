@@ -5,15 +5,9 @@ import MintButton from "../MintButton"
 interface AllowListFormProps {
   twitterHandle: string
   setTwitterHandle: (value: string) => void
-  generatedName?: string
   loading: boolean
 }
-const AllowListForm: FC<AllowListFormProps> = ({
-  twitterHandle,
-  setTwitterHandle,
-  loading,
-  generatedName,
-}) => {
+const AllowListForm: FC<AllowListFormProps> = ({ twitterHandle, setTwitterHandle, loading }) => {
   const displayBorder = (value: string) => !value?.length && "border-red-500"
   const displayRequiredText = (value: string, message: string) =>
     !value?.length && <p className="text-xs italic text-red-500">{message}</p>
@@ -38,18 +32,6 @@ const AllowListForm: FC<AllowListFormProps> = ({
             placeholder="@cre8ors"
           />
           {displayRequiredText(twitterHandle, "Please enter a twitter handle.")}
-          <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="generateName">
-            Generated NFT Collection Name
-          </label>
-          <input
-            className="w-full px-3 py-2 mb-3 leading-tight text-gray-700 rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-            id="twitterHandle"
-            type="text"
-            readOnly
-            value={_.startCase(generatedName)}
-            onChange={(e) => setTwitterHandle(e.target.value)}
-            placeholder="@cre8ors"
-          />
         </div>
         <div className="flex space-x-4 ">
           <MintButton twitterHandle={twitterHandle} />
