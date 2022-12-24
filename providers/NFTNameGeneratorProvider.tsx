@@ -48,13 +48,16 @@ export const NFTNameGeneratorProvider = ({ children }) => {
     }
   }, [txHash])
 
-  const postTweet = useCallback(async () => {
-    const response = await axios.post("/api/tweet", {
-      twitterHandle,
-      name,
-    })
-    return response
-  }, [name, twitterHandle])
+  const postTweet = useCallback(
+    async (generatedName) => {
+      const response = await axios.post("/api/tweet", {
+        twitterHandle,
+        generatedName,
+      })
+      return response
+    },
+    [twitterHandle],
+  )
 
   const getGeneratedName = useCallback(async () => {
     const response = await axios.get("/api/randomName")
@@ -116,7 +119,7 @@ export const NFTNameGeneratorProvider = ({ children }) => {
         setShowResults(true)
       }, 5000)
     }
-    const tweetResponse = await postTweet()
+    const tweetResponse = await postTweet(generated)
 
     if (tweetResponse?.data?.data?.id) {
       setTwitterId(tweetResponse.data.data.id)
