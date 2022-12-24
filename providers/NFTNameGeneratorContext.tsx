@@ -18,10 +18,10 @@ export interface NFTNameGeneratorContextInterface {
   twitterId?: string
   setTwitterId?: Dispatch<SetStateAction<string>>
   tokenId?: string
-  setTokenId?: Dispatch<SetStateAction<string>>
   handleGenerateClick?: () => void
   startConfetti?: boolean
   setStartConfetti?: Dispatch<SetStateAction<boolean>>
+  haveTokenId?: boolean
 }
 export const initialContext: NFTNameGeneratorContextInterface = {
   loading: false,
