@@ -9,7 +9,7 @@ const Results = () => {
   const { twitterId, imageURI, name, tokenId, haveTokenId } = useNFTNameGenerator()
   const [loading, setLoading] = useState(true)
   const isTestnet = process.env.NEXT_PUBLIC_CHAIN_ID === "80001"
-  const network = isTestnet ? "mumbai" : "polygon"
+  const network = isTestnet ? "mumbai" : "matic"
   const openSeaLink = `https://${isTestnet ? "testnets." : ""}opensea.io/assets/${network}/${
     process.env.NEXT_PUBLIC_CONTRACT_ADDRESS
   }/${tokenId}`

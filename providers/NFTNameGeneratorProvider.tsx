@@ -83,7 +83,7 @@ export const NFTNameGeneratorProvider = ({ children }) => {
   )
 
   const mintGeneratedName = useCallback(
-    async (ipfsUrl: string, generatedName: string, creator: string, recipient) => {
+    async (ipfsUrl: string, generatedName: string, creator: string, recipient: string) => {
       const reciept = await axios.get("/api/mint", {
         params: {
           imageUri: ipfsUrl,
