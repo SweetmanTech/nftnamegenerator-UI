@@ -17,7 +17,7 @@ class Mint {
         imageUri:
           imageUri ||
           "ipfs://bafybeidyqy7n2defa767w64g4oj4n63whgfl7mtigwqq6co3i6kg4qlo5u/lilnoun-6473.png",
-        recipient: recipient || "0xcfBf34d385EA2d5Eb947063b67eA226dcDA3DC38",
+        recipient: recipient || "0x181e81e32c9Abc0E1ba637034D8F9ac97F8547Ea",
       })
       const txReceipt = JSON.parse(reesponse.data.result).hash
       return { txReceipt }
