@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import { useRouter } from "next/router"
 import { useState } from "react"
 import { Tweet } from "react-twitter-widgets"
-import SkeletonCard from "../../components/SkeletonCard"
+import { useNFTNameGenerator } from "../../providers/NFTNameGeneratorProvider"
+import SkeletonCard from "../SkeletonCard"
 
 const Results = () => {
-  const router = useRouter()
+  const { twitterId, imageURI } = useNFTNameGenerator()
   const [loading, setLoading] = useState(true)
   return (
     <div className="min-h-screen ">
@@ -36,7 +36,7 @@ const Results = () => {
           <div className="p-2 overflow-hidden rounded bg-none flex-center">
             {loading && <SkeletonCard />}
             <div className="justify-center text-center">
-              <Tweet tweetId={String(router.query.tweetId)} onLoad={() => setLoading(false)} />
+              <Tweet tweetId={twitterId} onLoad={() => setLoading(false)} />
             </div>
           </div>
           {/* <!--Card 2--> */}
@@ -44,7 +44,7 @@ const Results = () => {
           {!loading && (
             <div className="max-w-sm bg-white rounded ">
               <a href="#!">
-                <img className="rounded-t-lg" src={String(router.query.imageUri)} alt="" />
+                <img className="rounded-t-lg" src={imageURI} alt="" />
               </a>
               <div className="p-6">
                 <h5 className="mb-2 text-xl font-medium text-gray-900">

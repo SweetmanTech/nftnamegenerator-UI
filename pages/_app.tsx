@@ -6,6 +6,7 @@ import { allChains, configureChains, createClient, WagmiConfig } from "wagmi"
 import { publicProvider } from "wagmi/providers/public"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import { NFTNameGeneratorProvider } from "../providers/NFTNameGeneratorProvider"
 
 const { chains, provider, webSocketProvider } = configureChains(
   allChains.filter(
@@ -32,8 +33,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider modalSize="compact" chains={chains}>
-        <Component {...pageProps} />
-        <ToastContainer />
+        <NFTNameGeneratorProvider>
+          <Component {...pageProps} />
+          <ToastContainer />
+        </NFTNameGeneratorProvider>
       </RainbowKitProvider>
     </WagmiConfig>
   )
