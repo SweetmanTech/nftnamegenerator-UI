@@ -15,7 +15,7 @@ const Home: NextPage = () => {
         description="use AI to inspire your next nft drop"
         image=""
       />
-      <div className="flex flex-row px-4 space-x-4 bg-white 4 lg:md:bg-transparent m-w-1/2">
+      <div className="flex flex-row w-1/2 px-4 space-x-4 bg-white lg:md:bg-transparent">
         <a href="https://defient.co" target="_blank" rel="noreferrer">
           <img
             src="icons/defient.svg"
