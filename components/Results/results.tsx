@@ -8,7 +8,11 @@ import SkeletonCard from "../SkeletonCard"
 const Results = () => {
   const { twitterId, imageURI, name, tokenId, haveTokenId } = useNFTNameGenerator()
   const [loading, setLoading] = useState(true)
-  const openSeaLink = `https://testnets.opensea.io/assets/${process.env.NEXT_PUBLIC_NETWORK}/${process.env.NEXT_PUBLIC_CONTRACT_ADDRESS}/${tokenId}`
+  const openSeaLink = `https://${
+    process.env.NEXT_PUBLIC_NETWORK === "mumbai" && "testnets."
+  }opensea.io/assets/${process.env.NEXT_PUBLIC_NETWORK}/${
+    process.env.NEXT_PUBLIC_CONTRACT_ADDRESS
+  }/${tokenId}`
   return (
     <div className="w-full max-w-4xl overflow-hidden">
       <div className="flex flex-col items-center text-center justify-centermx-auto">
