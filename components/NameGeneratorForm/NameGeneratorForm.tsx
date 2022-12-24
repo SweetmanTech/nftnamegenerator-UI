@@ -42,7 +42,6 @@ const NameGeneratorForm: FC = () => {
           <MintButton />
         </div>
       </form>
-      <p className="text-xs text-center text-gray-500">&copy;2022 DEFIENT. All rights reserved.</p>
     </div>
   )
 }
