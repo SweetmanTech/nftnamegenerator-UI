@@ -20,7 +20,7 @@ class Mint {
         recipient: recipient || "0xcfBf34d385EA2d5Eb947063b67eA226dcDA3DC38",
       })
       const txReceipt = JSON.parse(reesponse.data.result).hash
-      return { name: "John Doe", txReceipt }
+      return { txReceipt }
     } catch (err) {
       throw new Error(err)
     }
