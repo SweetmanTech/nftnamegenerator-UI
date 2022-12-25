@@ -14,7 +14,7 @@ const Results = () => {
     process.env.NEXT_PUBLIC_CONTRACT_ADDRESS
   }/${tokenId}`
   return (
-    <div className="w-full max-w-xs space-x-4 lg:md:max-w-xl">
+    <div className="w-full max-w-xs space-x-4 lg:md:max-w-2xl">
       <div className="flex flex-col items-center text-center justify-centermx-auto">
         <div className="p-2 m-2 bg-white rounded-lg ">
           <svg viewBox="0 175.71 699.04 99.66" className="scale-x-90">
