@@ -20,10 +20,10 @@ class TwitterBot {
   @Post()
   async postTweet(@Body() body) {
     const client = new TwitterApi({
-      appKey: process.env.TWITTER_CONSUMER_KEY,
-      appSecret: process.env.TWITTER_CONSUMER_SECRET,
-      accessToken: process.env.TWITTER_ACCESS_TOKEN_KEY,
-      accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
+      appKey: "9iufGV3a77DcQcPXL4vybxNeD",
+      appSecret: "nmSbX5p9085FzBgKKll6jbmpFvS8ooVTAvTeFWHm4yR9mdNjbP",
+      accessToken: "1605441796946792448-3B3ufkNpD3Hqo3Cpeicb9OjoxUYF3P",
+      accessSecret: "5gXSXDf82luiqMP0agaKAAXtrX7yTDW1N9KNCLJwnlBnH",
     })
     const { twitterHandle, generatedName } = body
 
